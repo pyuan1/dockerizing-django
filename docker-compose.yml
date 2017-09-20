@@ -12,7 +12,7 @@ web:
   env_file: .env
   environment:
     DEBUG: 'true'
-  command: gunicorn docker_django.wsgi:application -w 2 -b :8000
+  command: uwsgi http :8000 --module docker_django.wsgi:application
 
 nginx:
   restart: on-failure
